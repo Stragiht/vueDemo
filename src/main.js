@@ -5,9 +5,21 @@ import App from './App'
 import router from './router'
 import api from './api/index'
 import CxltToastr from 'cxlt-vue2-toastr'
+import Direcitve from './directive/directive'
+import Filter from './filter/filter'
+
 import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
 
-var toastrConfigs = {
+// 自定义指令 全局使用
+Object.keys(Direcitve).forEach(key => {
+  Vue.directive(key, Direcitve[key])
+})
+// 自定义过滤器 全局使用
+Object.keys(Filter).forEach(key => {
+  Vue.filter(key, Filter[key])
+})
+
+let toastrConfigs = {
   position: 'top right',
   showDuration: 2000,
   successColor: 'Green',
