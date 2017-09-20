@@ -40,19 +40,19 @@
     },
     created () {
       console.log(this.$toast)
+//      console
       this.$api.get('topics', null, data => {
         this.lists = data.data
         this.lists.forEach((item, index) => {
           this.$set(item, 'show', false)
         })
       })
-      axios.get('static/jsonData/nav.json').then(data => {
+      axios.get('../static/jsonData/nav.json').then(data => {
         sessionStorage.setItem('inforMession', JSON.stringify(data.data))
         let infro = JSON.parse(sessionStorage.getItem('inforMession'))
         console.log(infro)
       })
       utilService.isNotEmptyStr()
-      console.log(utilService.isEmptyStr(11))
       console.log(utilService.isNumber(11))
     },
     methods: {
@@ -72,9 +72,8 @@
         console.log(utilService.getArrDiffSet(arr, arr1))
       },
       showMethod (item) {
-        this.lists.forEach((iiitem, index) => {
-          iiitem.show = false
-          // this.$set(item, 'show', true)
+        this.lists.forEach((item, index) => {
+          this.$set(item, 'show', true)
           item.show = true
           console.log(item)
         })

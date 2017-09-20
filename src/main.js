@@ -9,6 +9,8 @@ import Direcitve from './directive/directive'
 import Filter from './filter/filter'
 
 import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
+import 'normalize.css'
+import './assets/css/public.css'
 
 // 自定义指令 全局使用
 Object.keys(Direcitve).forEach(key => {
