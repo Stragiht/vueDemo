@@ -25,12 +25,16 @@
             <i></i>
             <label class="cur" for ='remeend'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记住密码</label>
         </div>
-        <button class="loginButton cur">登陆</button>
+        <button class="loginButton cur" @click="login">登陆</button>
     </div>
 </template>
 <script>
   export default{
-
+    methods: {
+      login () {
+        this.$router.push({path: '/app/user/userList'})
+      }
+    }
   }
 </script>
 <style  lang="less" type="text/less" scoped>

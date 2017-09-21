@@ -4,3 +4,7 @@ html body{
 .cur{
     cursor: pointer;
 }
+
+.el-date-editor.el-input{
+    width: 180px;
+}

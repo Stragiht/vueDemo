@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'app'
 }
@@ -12,5 +13,8 @@ export default {
 
 <style lang="scss">
   @import './style/style.scss';
-
+#app{
+  width: 100%;
+  height: 100%;
+}
 </style>

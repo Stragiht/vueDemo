@@ -6,6 +6,8 @@ import Content from '@/page/content'
 import Jq from '@/page/jq'
 import Login from '@/page/login'
 import User from '@/page/user'
+import App from '@/components/app'
+import userList from '@/user/userList'
 
 Vue.use(Router)
 
@@ -32,8 +34,21 @@ export default new Router({
       component: Login
     },
     {
-      path: '/user',
-      component: User
+      path: '/app',
+      component: App,
+      children: [
+        {
+          path: '/app/user',
+          component: User,
+          children: [
+            {
+              path: '/app/user/userList',
+              component: userList
+            }
+          ]
+        }
+
+      ]
     }
   ]
 })

@@ -1,0 +1,54 @@
+{
+  "NAVTITLE": [
+    {
+      "FM": "wfx0001",
+      "TEXT": "账户管理",
+      "URL": "#",
+      "IF": true,
+      "POWER":true,
+      "VALUE": [
+        {
+          "FP": "",
+          "TEXT": "账户列表",
+          "URL": "/user/userList",
+          "IF": true,
+          "POWER": false,
+          "VALUE": []
+        }
+      ]
+    },
+    {
+      "FM": "wfx0002",
+      "TEXT": "系统管理",
+      "URL": "#",
+      "IF": false,
+      "POWER": true,
+      "VALUE": [
+        {
+          "FP": "",
+          "TEXT": "系统角色设置",
+          "URL": "/user/userList",
+          "IF": true,
+          "POWER": false,
+          "VALUE": []
+        },
+        {
+          "FP": "",
+          "TEXT": "系统权限设置",
+          "URL": "/user/userList",
+          "IF": true,
+          "POWER": false,
+          "VALUE": []
+        },
+        {
+          "FP": "",
+          "TEXT": "系统密码修改",
+          "URL": "/user/userList",
+          "IF": true,
+          "POWER": false,
+          "VALUE": []
+        }
+      ]
+    }
+  ]
+}
