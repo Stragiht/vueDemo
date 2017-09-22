@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/9/11.
  */
-var root = '/api/v1'
+var root = '/p/api'
 import axios from 'axios'
 
 function toType (obj) {
@@ -48,7 +48,8 @@ function apiAxios (method, url, params, success, failure) {
     withCredentials: false
   })
       .then(function (res) {
-        if (res.data.success === true) {
+        console.log(res)
+        if (res.meta.success === true) {
           if (success) {
             success(res.data)
           }
@@ -56,14 +57,17 @@ function apiAxios (method, url, params, success, failure) {
           if (failure) {
             failure(res.data)
           } else {
-            window.alert('error: ' + JSON.stringify(res.data))
+            console.log(res)
+           // window.alert('error: ' + JSON.stringify(res.data))
           }
         }
       })
       .catch(function (err) {
+        console.log(err)
         let res = err.response
         if (err) {
-          window.alert('api error, HTTP CODE: ' + res.status)
+          console.log(res)
+          // window.alert('api error, HTTP CODE: ' + res.status)
           return
         }
       })

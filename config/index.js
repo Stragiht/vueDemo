@@ -29,8 +29,8 @@ module.exports = {
     assetsPublicPath: '/',
     //配置接口跨域
     proxyTable: {
-      '/api/v1/**': {
-        target: 'https://cnodejs.org', // 你接口的域名
+      '/p/api/**': {
+        target: 'http://micromall.pokeepera.com', // 你接口的域名
         secure: false,
         changeOrigin: false,
       }

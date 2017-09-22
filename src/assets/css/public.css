@@ -8,3 +8,10 @@ html body{
 .el-date-editor.el-input{
     width: 180px;
 }
+.router-link-active{
+    background: #32a8fd;
+    color: #ffffff !important;
+}
+.red{
+    color: red;
+}

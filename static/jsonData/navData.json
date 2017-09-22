@@ -10,7 +10,15 @@
         {
           "FP": "",
           "TEXT": "账户列表",
-          "URL": "/user/userList",
+          "URL": "/app/user/userList",
+          "IF": true,
+          "POWER": false,
+          "VALUE": []
+        },
+        {
+          "FP": "",
+          "TEXT": "开通账户",
+          "URL": "/app/user/addCompany",
           "IF": true,
           "POWER": false,
           "VALUE": []

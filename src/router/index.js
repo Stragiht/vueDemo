@@ -8,6 +8,7 @@ import Login from '@/page/login'
 import User from '@/page/user'
 import App from '@/components/app'
 import userList from '@/user/userList'
+import addCompany from '@/user/addCompany'
 
 Vue.use(Router)
 
@@ -44,6 +45,10 @@ export default new Router({
             {
               path: '/app/user/userList',
               component: userList
+            },
+            {
+              path: '/app/user/addCompany',
+              component: addCompany
             }
           ]
         }

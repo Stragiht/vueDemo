@@ -7,11 +7,13 @@ import api from './api/index'
 import CxltToastr from 'cxlt-vue2-toastr'
 import Direcitve from './directive/directive'
 import Filter from './filter/filter'
+import axios from './api/http'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
 import 'normalize.css'
 import './assets/css/public.css'
+
 Vue.use(ElementUI)
 
 // 自定义指令 全局使用
@@ -44,6 +46,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  axios,
   template: '<App/>',
   components: {App}
 })

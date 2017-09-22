@@ -22,6 +22,7 @@
 </script>
 <style type="text/less" scoped lang="scss">
     .header {
+        z-index: 10;
         height: 60px;
         width: 100%;
         background: #23272e;

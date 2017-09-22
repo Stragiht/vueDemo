@@ -3,7 +3,7 @@
         <v-header></v-header>
         <h1 class="logo">cnodejs Api Test</h1>
         <input type="text" v-css="{color:'blue',borderStyle:'solid', border:'1px solid red',outline:'none'}">
-        <button v-user-power ="100001">哈哈</button>
+        <button v-user-power="100001">哈哈</button>
         <button @click="showToaster">点击我点击我</button>
         <span>{{money | currency}}</span>
         <ul class="list">
@@ -41,7 +41,8 @@
     created () {
       console.log(this.$toast)
 //      console
-      this.$api.get('topics', null, data => {
+
+      this.$api.post('shop/selectShop', {'pageNum': 1, 'pageSize': 10}, data => {
         this.lists = data.data
         this.lists.forEach((item, index) => {
           this.$set(item, 'show', false)

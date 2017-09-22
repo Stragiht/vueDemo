@@ -8,7 +8,7 @@
             <transition name="fade" v-if="title.IF"  >
                 <ul>
                     <li v-for="(article,index) in title.VALUE" :key="article.TEXT">
-                        {{article.TEXT}}
+                        <router-link :to="article.URL">{{article.TEXT}}</router-link>
                     </li>
                 </ul>
 
@@ -47,6 +47,7 @@
         width: 200px;
         height: 100%;
         position: fixed;
+        z-index: 10;
         left: 0;
         top: 60px;
         background: #282c33;
@@ -64,16 +65,16 @@
         }
         ul {
             width: 200px;
-            padding-left: 15px;
-            box-sizing: border-box;
             cursor: pointer;
-            li {
+            li a{
+                display: block;
+                padding-left: 15px;
+                box-sizing: border-box;
                 width: 200px;
                 height: 38px;
                 line-height: 38px;
                 font-size: 15px;
                 color: #c0c0c1;
-
             }
         }
         .fade-enter-active, .fade-leave-active {
