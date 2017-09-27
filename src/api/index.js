@@ -47,30 +47,30 @@ function apiAxios (method, url, params, success, failure) {
     baseURL: root,
     withCredentials: false
   })
-      .then(function (res) {
+  .then(function (res) {
+    console.log(res)
+    if (res.data.meta.success === true) {
+      if (success) {
+        success(res.data)
+      }
+    } else {
+      if (failure) {
+        failure(res.data)
+      } else {
         console.log(res)
-        if (res.meta.success === true) {
-          if (success) {
-            success(res.data)
-          }
-        } else {
-          if (failure) {
-            failure(res.data)
-          } else {
-            console.log(res)
-           // window.alert('error: ' + JSON.stringify(res.data))
-          }
-        }
-      })
-      .catch(function (err) {
-        console.log(err)
-        let res = err.response
-        if (err) {
-          console.log(res)
-          // window.alert('api error, HTTP CODE: ' + res.status)
-          return
-        }
-      })
+        // window.alert('error: ' + JSON.stringify(res.data))
+      }
+    }
+  })
+  .catch(function (err) {
+    console.log(err)
+    let res = err.response
+    if (err) {
+      console.log(res)
+      // window.alert('api error, HTTP CODE: ' + res.status)
+      return
+    }
+  })
 }
 
 // 返回在vue模板中的调用接口

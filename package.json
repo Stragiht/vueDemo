@@ -16,6 +16,7 @@
   "dependencies": {
     "cxlt-vue2-toastr": "^1.0.12",
     "element-ui": "^1.4.4",
+    "jquery": "^3.2.1",
     "js-md5": "^0.6.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",

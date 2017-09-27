@@ -22,10 +22,10 @@ axios.interceptors.request.use(config => {
   return Promise.reject(error)
 })
 // http响应拦截器
-axios.interceptors.response.use(data => {
+axios.interceptors.response.use(response => {
   // 响应成功关闭loading
   loadinginstace.close()
-  return data
+  return response
 }, error => {
   loadinginstace.close()
   Message.error({

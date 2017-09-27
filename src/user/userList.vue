@@ -6,9 +6,9 @@
                 <span>>></span>
                 <h4>账户列表</h4>
             </div>
-            <div class='title-right'>
+           <!-- <div class='title-right'>
                 <a href="javascript:void(0)">返回</a>
-            </div>
+            </div>-->
         </div>
         <div class="user-content">
             <div class="user-serach">

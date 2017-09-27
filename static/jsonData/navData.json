@@ -35,7 +35,7 @@
         {
           "FP": "",
           "TEXT": "系统角色设置",
-          "URL": "/user/userList",
+          "URL": "/app/setTing/roleList",
           "IF": true,
           "POWER": false,
           "VALUE": []
@@ -43,7 +43,7 @@
         {
           "FP": "",
           "TEXT": "系统权限设置",
-          "URL": "/user/userList",
+          "URL": "/app/setTing/perMissionList",
           "IF": true,
           "POWER": false,
           "VALUE": []
@@ -51,7 +51,7 @@
         {
           "FP": "",
           "TEXT": "系统密码修改",
-          "URL": "/user/userList",
+          "URL": "/app/setTing/changePasword",
           "IF": true,
           "POWER": false,
           "VALUE": []

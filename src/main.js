@@ -15,6 +15,7 @@ import 'normalize.css'
 import './assets/css/public.css'
 
 Vue.use(ElementUI)
+// withCredentials默认是false，意思就是不携带cookie信息，那就让它为true，我是
 
 // 自定义指令 全局使用
 Object.keys(Direcitve).forEach(key => {
