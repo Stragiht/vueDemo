@@ -32,7 +32,7 @@ module.exports = {
       '/p/api/**': {
         target: 'http://micromall.pokeepera.com', // 你接口的域名
         secure: false,
-        changeOrigin: true,
+        changeOrigin: true
     }
 
   },

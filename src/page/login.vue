@@ -8,20 +8,20 @@
             欢迎登陆
         </div>
         <div class="count">
-            <input type="text" placeholder="账号" v-model="loginData.userName">
+            <input type="text" v-input-focus placeholder="账号" v-model="loginData.userName">
             <span></span>
         </div>
         <div class="password">
-            <input type="text" placeholder="密码" v-model="loginData.password">
+            <input type="text" v-input-focus placeholder="密码" v-model="loginData.password">
             <span></span>
         </div>
         <div class="code">
-            <input type="text" placeholder="验证码" v-model="loginData.code">
+            <input type="text" v-input-focus placeholder="验证码" v-model="loginData.code">
             <span></span>
             <img :src="imgUrl" alt="" class="cur" @click="getImgCode">
         </div>
         <div class="remeend">
-            <input type="checkbox" class="cur" id="remeend"/>
+            <input type="checkbox" class="cur" v-model="is_remember" v-bind:v-true-value="true"  v-bind:false-value="false" id="remeend"/>
             <i></i>
             <label class="cur" for='remeend'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记住密码</label>
         </div>
@@ -30,15 +30,16 @@
 </template>
 <script>
   import md5 from 'js-md5'
-
+  import cookie from './../utils/cookie'
   export default {
     data () {
       return {
         'imgUrl': '',
+        'is_remember': false,
         loginData: {
           'code': '',
-          'userName': '',
-          'password': ''
+          'userName': cookie.get('userName') ? cookie.get('userName') : '',
+          'password': cookie.get('password') ? cookie.get('password') : ''
         }
       }
     },
@@ -48,17 +49,24 @@
     methods: {
       _getImgUrl () {
         this.imgUrl = window.location.origin + '/p/api/system/login/getCodeImg/100/40' + '?' + new Date().getTime()
-        console.log(this.imgUrl)
       },
       login () {
+        let _this = this
         let loginDataCopy = Object.assign({}, this.loginData)
         loginDataCopy.password = md5(md5(loginDataCopy.password) + loginDataCopy.code)
         this.$api.post('system/platLogin', loginDataCopy, data => {
+          if (this.is_remember) {
+            cookie.set('userName', this.loginData.userName, 30)
+            cookie.set('password', this.loginData.password, 30)
+          }
           sessionStorage.setItem('token', data.data)
-         // this.$router.push({path: '/app/user/userList'})
-          console.log(data)
+          this.$router.push({path: '/app/user/userList'})
+        }, {
+          '_error': function () {
+            _this._getImgUrl()
+          }
         })
-        this.$router.push({path: '/app/user/userList'})
+        // this.$router.push({path: '/app/user/userList'})
       },
       getImgCode () {
         this._getImgUrl()

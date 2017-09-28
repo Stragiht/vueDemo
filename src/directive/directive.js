@@ -9,6 +9,16 @@ const userPower = {
     }
   }
 }
+const inputFocus = {
+  bind: function (el, binding) {
+    el.onfocus = function () {
+      el.style.borderBottom = '1px solid red'
+    }
+    el.onblur = function () {
+      el.style.borderBottom = '1px solid #e9f1f6'
+    }
+  }
+}
 const css = {
   // 钩子函数 ,el就是当前元素存在即调用
   inserted (el, binding) {
@@ -28,6 +38,7 @@ const css = {
 }
 export default {
   userPower,
-  css
+  css,
+  inputFocus
 }
 

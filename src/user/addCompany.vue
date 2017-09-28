@@ -19,86 +19,99 @@
             <div class="item">
                 <div class="item-title"><span class="red">*</span> 公司名称
                 </div>
-                <input type="text" placeholder="请输入登录账号">
+                <input type="text" placeholder="请输入公司名称">
             </div>
             <div class="item">
                 <div class="item-title"> 公司税后
                 </div>
-                <input type="text" placeholder="请输入登录账号">
+                <input type="text" placeholder="请输入公司税后">
             </div>
             <div class="item">
                 <div class="item-title"><span class="red">*</span> 联系人
                 </div>
-                <input type="text" placeholder="请输入登录账号">
-            </div>
-            <div class="item">
-                <div class="item-title"><span class="red">*</span> 登录账号
-                </div>
-                <input type="text" placeholder="请输入登录账号">
+                <input type="text" placeholder="请输入联系人">
             </div>
             <div class="item">
                 <div class="item-title"><span class="red">*</span> 联系人手机号
                 </div>
-                <input type="text" placeholder="请输入登录账号">
+                <input type="text" placeholder="请输入联系人手机号">
             </div>
             <div class="item">
                 <div class="item-title"><span class="red">*</span> 所属行业
                 </div>
-                 <input type="text" placeholder="请输入登录账号">
+                 <input type="text" placeholder="请输入所属行业">
             </div>
             <div class="item">
-                <div class="item-title"><span class="red">*</span> 公司电话
+                <div class="item-title">公司电话
                 </div>
-                <input type="text" placeholder="请输入登录账号">
+                <input type="text" placeholder="请输入公司电话">
             </div>
             <div class="item">
                 <div class="item-title"><span class="red">*</span> 初始密码
                 </div>
-                <input type="text" placeholder="请输入登录账号">
+                <input type="text" placeholder="请输入初始密码">
             </div>
             <div class="item">
                 <div class="item-title"><span class="red">*</span> 确认密码
                 </div>
-                <input type="text" placeholder="请输入登录账号">
+                <input type="text" placeholder="请输入确认密码">
             </div>
             <div class="item">
                 <div class="item-title"><span class="red">*</span> 使用时限
                 </div>
-                 <input type="text" placeholder="请输入登录账号">
+                <el-date-picker
+                        v-model="value1"
+                        type="datetime"
+                        placeholder="请选择开始日期">
+                </el-date-picker>
+                <el-date-picker
+                        v-model="value1"
+                        type="datetime"
+                        placeholder="请选择结束日期">
+                </el-date-picker>
             </div>
             <div class="item">
                 <div class="item-title"><span class="red">*</span> 状态
                 </div>
-                 <input type="text" placeholder="请输入登录账号">
+                <el-radio class="radio"  label="1">备选项</el-radio>
+                <el-radio class="radio" label="2">备选项</el-radio>
             </div>
             <div class="item">
                 <div class="item-title"><span class="red">*</span> 销售人员
                 </div>
-                 <input type="text" placeholder="请输入登录账号">
+                 <input type="text" placeholder="请输入销售人员">
             </div>
             <div class="item">
                 <div class="item-title"><span class="red">*</span> 销售人员电话
                 </div>
-                 <input type="text" placeholder="请输入登录账号">
+                 <input type="text" placeholder="请输入销售人员电话">
             </div>
             <div class="item">
                 <div class="item-title"><span class="red">*</span> 公司域名
                 </div>
-                 <input type="text" placeholder="请输入登录账号">
+                 <input type="text" placeholder="请输入公司域名"><span>pokeepera.net</span>
             </div>
-            <div class="item">
+            <div class="upload">
                 <div class="item-title"><span class="red">*</span> 合作协议(合同)
                 </div>
-                 <input type="text" placeholder="请输入登录账号">
+                <!--<div class="upload_file">
+                    <i class="el-icon-plus avatar-uploader-icon"></i>
+                    <input type="file" >
+                </div>-->
+                <upload :src="'p/api/upload/files'"></upload>
             </div>
-            <div>
+            <div class="button">
                 <el-button type="primary">提交</el-button>
             </div>
         </div>
     </div>
 </template>
 <script>
-    export default {}
+  import upload from '@/components/upload'
+
+  export default {
+    components: {upload}
+  }
 </script>
 <style type="text/less" lang="less" scoped >
     .add-accout{
@@ -145,7 +158,6 @@
             .item{
                 height: 38px;
                 line-height: 38px;
-                overflow: hidden;
                 margin-top: 20px;
                 .item-title{
                     float: left;
@@ -168,6 +180,51 @@
                     box-sizing: border-box;
                 }
             }
+            .upload{
+                height: 150px;
+                overflow: hidden;
+                padding: 15px 0;
+                box-sizing: border-box;
+                .item-title{
+                    float: left;
+                    width: 120px;
+                    text-align: right;
+                    margin-right: 10px;
+                    line-height: 38px;
+                    font-size: 15px;
+                    color: #0b0b0b;
+                }
+                .upload_file{
+                    float: left;
+                    position: relative;
+                    i{
+                        display: block;
+                        width: 120px;
+                        height: 120px;
+                        border: 1px solid #cccccc;
+                        text-align: center;
+                        line-height: 120px;
+                    }
+                    input{
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 120px;
+                        height: 120px;
+                        opacity: 0;
+                    }
+                }
+
+            }
+
+        }
+        .button{
+            margin-left: 130px;
+        }
+        .el-date-editor el-input el-date-editor--datetime{
+            float: left;
+            width: 200px;
+            height: 36px;;
         }
     }
 </style>

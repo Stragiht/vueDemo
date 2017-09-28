@@ -3,14 +3,14 @@
  */
 var root = '/p/api'
 import axios from 'axios'
-
+import { Message } from 'element-ui'
 function toType (obj) {
   return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 }
 
 // 参数过滤函数
 function filterNull (o) {
-  for (var key in o) {
+  for (let key in o) {
     if (o[key] === null) {
       delete o[key]
     }
@@ -35,9 +35,30 @@ function filterNull (o) {
   另外，不同的项目的处理方法也是不一致的，这里出错就是简单的alert
 */
 
-function apiAxios (method, url, params, success, failure) {
+function apiAxios (method, url, params, success, handle) {
   if (params) {
     params = filterNull(params)
+  }
+  let _before = ''
+  let _finally = ''
+  let _error = ''
+  let _beforeSuccess = ''
+  if (handle && handle !== null) {
+    if (handle._before && handle._before !== null) {
+      _before = handle._before
+    }
+    if (handle._finally && handle._finally !== null) {
+      _finally = handle._finally
+    }
+    if (handle._beforeSuccess && handle._beforeSuccess !== null) {
+      _beforeSuccess = handle._beforeSuccess
+    }
+    if (handle._error && handle._error !== null) {
+      _error = handle._error
+    }
+  }
+  if (typeof _before === 'function') {
+    _before()
   }
   axios({
     method: method,
@@ -46,23 +67,34 @@ function apiAxios (method, url, params, success, failure) {
     params: method === 'GET' || method === 'DELETE' ? params : null,
     baseURL: root,
     withCredentials: false
-  })
-  .then(function (res) {
-    console.log(res)
+  }).then(function (res) {
     if (res.data.meta.success === true) {
+      if (typeof _beforeSuccess === 'function') {
+        _beforeSuccess(res.data.data)
+      }
       if (success) {
-        success(res.data)
+        success(res.data.data)
       }
     } else {
-      if (failure) {
-        failure(res.data)
+      if (res.data.meta.message) {
+        let messageString = ''
+        messageString = res.data.meta.message
+        Message.error({
+          message: messageString
+        })
+      }
+
+      if (_error) {
+        _error(res.data)
       } else {
         console.log(res)
         // window.alert('error: ' + JSON.stringify(res.data))
       }
     }
-  })
-  .catch(function (err) {
+    if (typeof _finally === 'function') {
+      _finally()
+    }
+  }).catch(function (err) {
     console.log(err)
     let res = err.response
     if (err) {
